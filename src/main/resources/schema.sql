@@ -6,3 +6,12 @@ CREATE TABLE TBL_EMPLOYEES (
   last_name VARCHAR(250) NOT NULL,
   email VARCHAR(250) DEFAULT NULL
 );
+
+
+CREATE TABLE TBL_TODO (
+  id INT AUTO_INCREMENT  PRIMARY KEY,
+  user_name VARCHAR(250) NOT NULL,
+  description VARCHAR(500) NOT NULL,
+  target_date timestamp NOT NULL,
+  is_done boolean DEFAULT 0
+);
