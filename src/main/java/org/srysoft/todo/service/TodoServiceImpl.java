@@ -17,8 +17,17 @@ public class TodoServiceImpl implements TodoService {
 	@Override
 	public List<TodoBean> findAllTodos(String username) {
 
-		List<TodoBean> todoBeanList = todoRepository.findAll().stream().filter(t -> t.getUserName().equals(username))
-				.map(TodoBean::new).collect(Collectors.toList());
+		/*
+		 * List<TodoBean> todoBeanList = todoRepository.findAll().stream().filter(t ->
+		 * t.getUserName().equals(username))
+		 * .map(TodoBean::new).collect(Collectors.toList()); return todoBeanList;
+		 */
+
+		// OR
+
+		List<TodoBean> todoBeanList = todoRepository.findByUserName(username).stream().map(TodoBean::new)
+				.collect(Collectors.toList());
+
 		return todoBeanList;
 	}
 
