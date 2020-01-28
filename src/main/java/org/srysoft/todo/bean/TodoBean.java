@@ -71,4 +71,10 @@ public class TodoBean {
 		this.isDone = isDone;
 	}
 
+	@Override
+	public String toString() {
+		return "TodoBean [id=" + id + ", username=" + username + ", descritpion=" + descritpion + ", targetDate="
+				+ targetDate + ", isDone=" + isDone + "]";
+	}
+
 }
