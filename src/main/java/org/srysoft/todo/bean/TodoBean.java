@@ -8,16 +8,16 @@ public class TodoBean {
 
 	private long id;
 	private String username;
-	private String descritpion;
+	private String description;
 
 	private Date targetDate;
 	private boolean isDone;
 
-	public TodoBean(long id, String username, String descritpion, Date targetDate, boolean isDone) {
+	public TodoBean(long id, String username, String description, Date targetDate, boolean isDone) {
 		super();
 		this.id = id;
 		this.username = username;
-		this.descritpion = descritpion;
+		this.description = description;
 		this.targetDate = targetDate;
 		this.isDone = isDone;
 	}
@@ -26,7 +26,7 @@ public class TodoBean {
 
 		this.id = entity.getId();
 		this.username = entity.getUserName();
-		this.descritpion = entity.getDescription();
+		this.description = entity.getDescription();
 		this.targetDate = entity.getTargetDate();
 		this.isDone = entity.isDone();
 	}
@@ -47,12 +47,12 @@ public class TodoBean {
 		this.username = username;
 	}
 
-	public String getDescritpion() {
-		return descritpion;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescritpion(String descritpion) {
-		this.descritpion = descritpion;
+	public void setDescription(String descritpion) {
+		this.description = descritpion;
 	}
 
 	public Date getTargetDate() {
@@ -73,7 +73,7 @@ public class TodoBean {
 
 	@Override
 	public String toString() {
-		return "TodoBean [id=" + id + ", username=" + username + ", descritpion=" + descritpion + ", targetDate="
+		return "TodoBean [id=" + id + ", username=" + username + ", description=" + description + ", targetDate="
 				+ targetDate + ", isDone=" + isDone + "]";
 	}
 

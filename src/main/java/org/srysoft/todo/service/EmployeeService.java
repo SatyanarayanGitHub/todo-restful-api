@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.srysoft.todo.entity.EmployeeEntity;
 import org.srysoft.todo.exception.RecordNotFoundException;
-
-
+/**
+ * 
+ * @author SATYA
+ *
+ */
 public interface EmployeeService {
 
 	public List<EmployeeEntity> getAllEmployees();
