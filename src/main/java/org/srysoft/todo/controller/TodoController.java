@@ -3,11 +3,14 @@ package org.srysoft.todo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.srysoft.todo.bean.TodoBean;
 import org.srysoft.todo.exception.RecordNotFoundException;
@@ -24,6 +27,10 @@ public class TodoController {
 
 	@Autowired
 	private TodoService todoService;
+
+	public TodoController() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@GetMapping("/todo")
 	public List<TodoBean> getAllTodos() {
@@ -50,6 +57,14 @@ public class TodoController {
 			return ResponseEntity.noContent().build();
 		}
 		return ResponseEntity.notFound().build();
+	}
+
+	@PutMapping("/user/{username}/todo")
+	public ResponseEntity<TodoBean> updateTodo(@PathVariable String username, @RequestBody TodoBean todo) throws RecordNotFoundException {
+		
+		TodoBean todoBean = todoService.createOrUpdateEmployee(todo);
+		
+		return new ResponseEntity<TodoBean>(todo, HttpStatus.OK);				
 	}
 
 }

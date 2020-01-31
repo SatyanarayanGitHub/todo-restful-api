@@ -18,4 +18,6 @@ public interface TodoService {
 	public TodoBean findTodoByUserAndId(String username, long id) throws RecordNotFoundException;
 
 	public TodoBean deleteByUserNameAndId(String username, long id)  throws RecordNotFoundException;
+
+	public TodoBean createOrUpdateEmployee(TodoBean todo) throws RecordNotFoundException;
 }

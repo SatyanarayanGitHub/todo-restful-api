@@ -14,7 +14,7 @@ public class TodoBean {
 	private boolean isDone;
 
 	public TodoBean(long id, String username, String description, Date targetDate, boolean isDone) {
-		super();
+		//super();
 		this.id = id;
 		this.username = username;
 		this.description = description;
@@ -23,7 +23,6 @@ public class TodoBean {
 	}
 
 	public TodoBean(TodoEntity entity) {
-
 		this.id = entity.getId();
 		this.username = entity.getUserName();
 		this.description = entity.getDescription();
