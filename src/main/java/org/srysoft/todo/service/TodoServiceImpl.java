@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.srysoft.todo.bean.TodoBean;
@@ -19,8 +21,15 @@ import org.srysoft.todo.repository.TodoRepository;
 @Service
 public class TodoServiceImpl implements TodoService {
 
+	private static final Logger logger = LoggerFactory.getLogger(TodoService.class);
+
 	@Autowired
-	private TodoRepository todoRepository;
+	private TodoRepository todoRepository;	
+	
+
+	public TodoServiceImpl() {
+		logger.info("->> TodoService created!!");
+	}
 
 	@Override
 	public List<TodoBean> findAllTodos(String username) {
@@ -80,7 +89,9 @@ public class TodoServiceImpl implements TodoService {
 	public TodoBean createOrUpdateEmployee(TodoBean todo) throws RecordNotFoundException {
 		TodoBean todoBean = null;
 
-		if (todo.getId() != 0L && todo.getId() == -1) {
+		logger.info("==>> " + todo);
+
+		if (todo.getId() == 0L || todo.getId() == -1) {
 			// INSERT
 			TodoEntity entity = new TodoEntity();
 
@@ -106,7 +117,7 @@ public class TodoServiceImpl implements TodoService {
 			} else {
 				throw new RecordNotFoundException("No todo record exist for given id [" + todo.getId() + "]");
 			}
-			
+
 		}
 
 		return todoBean;
