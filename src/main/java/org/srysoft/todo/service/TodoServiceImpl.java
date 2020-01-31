@@ -48,11 +48,25 @@ public class TodoServiceImpl implements TodoService {
 	public TodoBean deleteByUserNameAndId(String username, long id) throws RecordNotFoundException {
 
 		TodoBean todoBean = null;
-//		Optional<TodoEntity> todoEntity = todoRepository.findById(id);
 		Optional<TodoEntity> todoEntity = todoRepository.findByUserNameAndId(username, id);
 
 		if (todoEntity.isPresent()) {
 			todoRepository.deleteById(id);
+			todoBean = new TodoBean(todoEntity.get());
+
+		} else {
+			throw new RecordNotFoundException("No todo record exist for given id [" + id + "]");
+		}
+
+		return todoBean;
+	}
+
+	@Override
+	public TodoBean findTodoByUserAndId(String username, long id) throws RecordNotFoundException {
+		TodoBean todoBean = null;
+		Optional<TodoEntity> todoEntity = todoRepository.findByUserNameAndId(username, id);
+
+		if (todoEntity.isPresent()) {			
 			todoBean = new TodoBean(todoEntity.get());
 
 		} else {

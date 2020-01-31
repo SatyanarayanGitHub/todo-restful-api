@@ -76,5 +76,7 @@ public class TodoBean {
 		return "TodoBean [id=" + id + ", username=" + username + ", description=" + description + ", targetDate="
 				+ targetDate + ", isDone=" + isDone + "]";
 	}
+	
+	
 
 }

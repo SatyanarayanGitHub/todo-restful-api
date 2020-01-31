@@ -11,9 +11,11 @@ import org.srysoft.todo.exception.RecordNotFoundException;
  */
 public interface TodoService {
 
-	public List<TodoBean> findAllTodos(String username);
-
 	public List<TodoBean> findAllTodos();
+	
+	public List<TodoBean> findAllTodos(String username);
+	
+	public TodoBean findTodoByUserAndId(String username, long id) throws RecordNotFoundException;
 
 	public TodoBean deleteByUserNameAndId(String username, long id)  throws RecordNotFoundException;
 }

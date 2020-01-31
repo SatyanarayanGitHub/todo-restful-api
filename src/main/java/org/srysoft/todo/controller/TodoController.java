@@ -31,8 +31,14 @@ public class TodoController {
 	}
 
 	@GetMapping("user/{username}/todo")
-	public List<TodoBean> getAllUserTodos(@PathVariable(name = "username") String username) {
+	public List<TodoBean> getAllTodosByUser(@PathVariable(name = "username") String username) {
 		return todoService.findAllTodos(username);
+	}
+
+	@GetMapping("user/{username}/todo/{id}")
+	public TodoBean getUserTodoByUserAndId(@PathVariable(name = "username") String username, @PathVariable long id)
+			throws RecordNotFoundException {
+		return todoService.findTodoByUserAndId(username, id);
 	}
 
 	@DeleteMapping("/user/{username}/todos/{todoId}")
