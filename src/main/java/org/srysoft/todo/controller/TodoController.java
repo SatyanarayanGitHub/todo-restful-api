@@ -78,6 +78,7 @@ public class TodoController {
 	public ResponseEntity<Void> saveTodo(@PathVariable String username, @RequestBody TodoBean todo)
 			throws RecordNotFoundException {
 
+		todo.setUsername(username);
 		TodoBean todoBean = todoService.createOrUpdateEmployee(todo);
 
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(todoBean.getId())
